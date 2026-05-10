@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Meza | AI & Agriculture Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-main: #f8fafc; /* Soft Slate White */
+            --bg-subtle: #f1f5f9; /* Light Mist */
+            --card-bg: #ffffff;
+            --accent-teal: #0d9488; /* Deep Tropical Teal for contrast */
+            --accent-coral: #f43f5e; /* Vibrant Island Bloom */
+            --accent-blue: #0284c7; /* Pacific Sky */
+            --text-primary: #0f172a; /* Slate Dark */
+            --text-secondary: #475569; /* Slate Gray */
+            --border: rgba(15, 23, 42, 0.1);
+            --glow-color: rgba(13, 148, 136, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        code, .mono {
+            font-family: 'Space Mono', monospace;
+            font-size: 0.9em;
+        }
+
+        /* Ambient Glows - Adjusted for Light Mode */
+        .glow {
+            position: fixed;
+            width: 60vw;
+            height: 60vw;
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(120px);
+            opacity: 0.6;
+            animation: tide 20s infinite alternate ease-in-out;
+        }
+        .glow-1 { 
+            top: -20%; right: -10%; 
+            background: radial-gradient(circle, #ccfbf1 0%, transparent 70%); 
+        }
+        .glow-2 { 
+            bottom: -10%; left: -10%; 
+            background: radial-gradient(circle, #fee2e2 0%, transparent 70%); 
+            animation-delay: -10s;
+        }
+
+        @keyframes tide {
+            0% { transform: translate(0,0) scale(1); }
+            100% { transform: translate(50px, 30px) scale(1.1); }
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 2.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid var(--text-primary);
+            margin-bottom: 4rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+        }
+
+        .nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            margin-left: 2rem;
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-teal);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 4rem 0 8rem;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: var(--text-primary);
+            color: #fff;
+            border-radius: 4px;
+            font-family: 'Space Mono', monospace;
+            font-size: 0.75rem;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        h1 {
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            line-height: 0.85;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -5px;
+            color: var(--text-primary);
+        }
+
+        .gradient-text {
+            color: var(--accent-teal);
+            background: linear-gradient(135deg, var(--accent-teal), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 3.5rem;
+            font-weight: 400;
+        }
+
+        .btn-primary {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--text-primary);
+            color: #fff;
+            padding: 1.2rem 2.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--accent-teal);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(13, 148, 136, 0.2);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-header {
+            margin-bottom: 5rem;
+            border-left: 6px solid var(--accent-coral);
+            padding-left: 2rem;
+        }
+
+        .section-header h2 {
+            font-size: 4rem;
+            letter-spacing: -3px;
+            line-height: 1;
+        }
+
+        /* About Grid */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 2px solid var(--text-primary);
+            padding: 3rem;
+            border-radius: 4px;
+            box-shadow: 10px 10px 0px var(--text-primary);
+        }
+
+        .stat-item {
+            border-bottom: 1px solid var(--border);
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .stat-label {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        .stat-val {
+            color: var(--text-primary);
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        /* Course Layout */
+        .course-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .module-card {
+            background: var(--bg-subtle);
+            padding: 2.5rem;
+            border-radius: 4px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .module-card:hover {
+            background: #fff;
+            border-color: var(--text-primary);
+            transform: scale(1.02);
+        }
+
+        .module-num {
+            color: var(--accent-teal);
+            font-family: 'Space Mono', monospace;
+            margin-bottom: 1.5rem;
+            display: block;
+            font-weight: 700;
+        }
+
+        /* Submission Grid */
+        .submission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .sub-card {
+            background: var(--card-bg);
+            border: 1px solid var(--text-primary);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 300px;
+            transition: all 0.3s ease;
+        }
+
+        .sub-card:hover {
+            box-shadow: 8px 8px 0px var(--accent-blue);
+            transform: translate(-4px, -4px);
+        }
+
+        .sub-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .sub-card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+        }
+
+        .link-arrow {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Space Mono', monospace;
+            padding-top: 2rem;
+        }
+
+        .link-arrow span {
+            color: var(--accent-coral);
+        }
+
+        footer {
+            padding: 6rem 0 4rem;
+            border-top: 2px solid var(--text-primary);
+            margin-top: 4rem;
+        }
+
+        .footer-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 4rem; }
+            .section-header h2 { font-size: 3rem; }
+            .footer-flex { flex-direction: column; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="glow glow-1"></div>
+    <div class="glow glow-2"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <div class="logo">MEZA<span style="color:var(--accent-coral)">_</span>RESEARCH</div>
+            <div class="nav-links">
+                <a href="#about">BIO</a>
+                <a href="#course">COURSE</a>
+                <a href="#submissions">LOGS</a>
+            </div>
+        </nav>
+
+        <!-- Hero -->
+        <section class="hero">
+            <span class="tag">Digital Agriculture // 2024 Cohort</span>
+            <h1>Rooted in <br><span class="gradient-text">Intelligence.</span></h1>
+            <p>Bridging the gap between organic horticulture and Generative AI to design resilient, automated systems for the next generation of growers.</p>
+            <a href="#submissions" class="btn-primary">
+                VIEW REPOSITORY
+                <span class="mono">-></span>
+            </a>
+        </section>
+
+        <!-- About -->
+        <section id="about">
+            <div class="section-header">
+                <span class="mono" style="color: var(--accent-coral);">SECTION_01</span>
+                <h2>The Origin.</h2>
+            </div>
+            <div class="about-grid">
+                <div class="card">
+                    <p style="margin-bottom: 2rem; font-size: 1.25rem; font-weight: 500;">Scholar of International Agriculture Development at <span style="border-bottom: 3px solid var(--accent-teal);">UC Davis</span>.</p>
+                    <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">I specialize in the physiology of cultivated plants and environmental soil science. My work is driven by the conviction that sustainable food systems require not just better seeds, but smarter tools.</p>
+                    <p style="color: var(--text-secondary);">As a Tagalog-speaking entrepreneur and nursery owner, I focus on localizing high-tech solutions for small-scale mixed vegetable production.</p>
+                </div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-label">RESEARCH_PHASE</span>
+                        <span class="stat-val">B.S. 2026</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">COMMERCE_REACH</span>
+                        <span class="stat-val">500+ SALES</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">DATA_IMPACT</span>
+                        <span class="stat-val">+15% EFF</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">AI_FOCUS</span>
+                        <span class="stat-val">NO-CODE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course -->
+        <section id="course">
+            <div class="section-header">
+                <span class="mono" style="color: var(--accent-blue);">SECTION_02</span>
+                <h2>Curriculum.</h2>
+            </div>
+            <div class="course-layout">
+                <div class="module-card">
+                    <span class="module-num">01_STRUCTURE</span>
+                    <h3>Web Arch.</h3>
+                    <p style="color: var(--text-secondary);">Designing research portals using LLM-assisted HTML and structural Markdown.</p>
+                </div>
+                <div class="module-card">
+                    <span class="module-num">02_DYNAMICS</span>
+                    <h3>Agri-Data</h3>
+                    <p style="color: var(--text-secondary);">Automated soil and inventory analysis using Julius and advanced Python interpreters.</p>
+                </div>
+                <div class="module-card">
+                    <span class="module-num">03_SYNTHESIS</span>
+                    <h3>Lit Search</h3>
+                    <p style="color: var(--text-secondary);">Accelerating biological discovery through AI-driven information extraction.</p>
+                </div>
+                <div class="module-card">
+                    <span class="module-num">04_AGENTS</span>
+                    <h3>Automation</h3>
+                    <p style="color: var(--text-secondary);">Engineering custom GPTs for responsive nursery and greenhouse management.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Submissions -->
+        <section id="submissions">
+            <div class="section-header">
+                <span class="mono" style="color: var(--accent-teal);">SECTION_03</span>
+                <h2>Artifacts.</h2>
+            </div>
+            <div class="submission-grid">
+                <div class="sub-card">
+                    <div>
+                        <span class="mono" style="font-size: 0.8rem; color: var(--accent-coral);">ENTRY_01</span>
+                        <h3>Neural Portfolio</h3>
+                        <p>High-contrast research portal utilizing light-mode Pacific aesthetics and responsive CSS.</p>
+                    </div>
+                    <a href="#" class="link-arrow">OPEN_FILE <span>---></span></a>
+                </div>
+                <div class="sub-card">
+                    <div>
+                        <span class="mono" style="font-size: 0.8rem; color: var(--accent-coral);">ENTRY_02</span>
+                        <h3>Logistics Vision</h3>
+                        <p>Analysis of shipping supply chains for drought-resistant plant inventory.</p>
+                    </div>
+                    <a href="#" class="link-arrow">UPDATING... <span>---></span></a>
+                </div>
+                <div class="sub-card">
+                    <div>
+                        <span class="mono" style="font-size: 0.8rem; color: var(--accent-coral);">ENTRY_03</span>
+                        <h3>Soil Metabolism</h3>
+                        <p>Literature review on environmental soil integrity synthesized via RAG models.</p>
+                    </div>
+                    <a href="#" class="link-arrow">UPDATING... <span>---></span></a>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="footer-flex">
+                <div>
+                    <h3 class="mono" style="font-size: 1.2rem; margin-bottom: 0.5rem;">VICTOR MEZA</h3>
+                    <p class="mono" style="font-size: 0.8rem; color: var(--text-secondary);">UC DAVIS // INTERNATIONAL AGRICULTURE DEVELOPMENT</p>
+                </div>
+                <div style="text-align: right;">
+                    <p class="mono" style="font-size: 0.8rem; font-weight: 700;">GEN_AI FOR WORK & RESEARCH 2024</p>
+                    <p style="margin-top: 0.5rem; font-size: 0.75rem; color: var(--text-secondary);">&copy; 2026 // ALL SYSTEMS GREEN</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+</body>
+</html>
