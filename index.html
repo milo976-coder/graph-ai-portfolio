@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Meza | AI & Agriculture Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Pacific & Agricultural Color Palette */
+            --ocean-blue: #026670;
+            --deep-sea: #012b39;
+            --lush-green: #5c832f;
+            --leaf-green: #9fb236;
+            --sand: #fef9f4;
+            --earth: #8b5a2b;
+            --text-dark: #2d3748;
+            --text-light: #f7fafc;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--sand);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Lora', serif;
+            color: var(--deep-sea);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* Hero Section with Pacific Gradient */
+        .hero {
+            position: relative;
+            background: linear-gradient(135deg, var(--deep-sea) 0%, var(--ocean-blue) 40%, var(--lush-green) 100%);
+            color: var(--text-light);
+            padding: 8rem 2rem 12rem 2rem;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(circle at center, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+            z-index: 1;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero-avatar {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem auto;
+            display: block;
+            border: 4px solid var(--sand);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .hero h1 {
+            color: var(--text-light);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: #e2e8f0;
+            margin-bottom: 2rem;
+        }
+
+        /* SVG Wave Divider */
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: translateY(1px); /* Prevent sub-pixel gaps */
+        }
+
+        .wave-divider svg {
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 120px;
+        }
+
+        .wave-divider .shape-fill {
+            fill: var(--sand);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: var(--sand);
+            padding: 1.5rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--ocean-blue);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--lush-green);
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        /* Sections */
+        section {
+            margin-bottom: 6rem;
+            animation: fadeIn 1.2s ease-out;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--deep-sea);
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            background: var(--leaf-green);
+            bottom: -10px;
+            left: 20%;
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+            font-size: 1.05rem;
+        }
+
+        .about-text strong {
+            color: var(--ocean-blue);
+        }
+
+        .about-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--lush-green);
+        }
+
+        .about-card ul {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .about-card li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #4a5568;
+        }
+
+        .about-card li::before {
+            content: '🌿';
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 0.9rem;
+        }
+
+        /* Course Section */
+        .course-wrapper {
+            background: white;
+            border-radius: 16px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-left: 6px solid var(--ocean-blue);
+        }
+
+        .course-intro {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Submissions Grid */
+        .submissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #edf2f7;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 4px;
+            background: linear-gradient(90deg, var(--lush-green), var(--ocean-blue));
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.4s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(2, 102, 112, 0.1);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-week {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--leaf-green);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+            color: var(--deep-sea);
+        }
+
+        .card p {
+            color: #718096;
+            font-size: 0.95rem;
+            flex-grow: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-link {
+            display: inline-block;
+            margin-top: auto;
+            padding: 0.5rem 1rem;
+            background-color: var(--sand);
+            color: var(--ocean-blue);
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover .card-link {
+            background-color: var(--ocean-blue);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--deep-sea);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            padding: 3rem 2rem;
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .about-grid { grid-template-columns: 1fr; }
+            nav { flex-wrap: wrap; gap: 1rem; }
+            .wave-divider svg { height: 60px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <img src="https://github.com/milo976-coder/graph-ai-portfolio/blob/main/PortraitsPHIN-80.jpg?raw=true" alt="Victor Meza" class="hero-avatar">
+            <h1>Milo Varea</h1>
+            <p>Bridging International Agriculture Development with Artificial Intelligence. Cultivating the future of farming through data, automation, and sustainable practices.</p>
+        </div>
+        <!-- Decorative Pacific Wave -->
+        <div class="wave-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.08,130.83,123.6,189.5,110.3,235.32,99.8,278.43,80.5,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#course">The Course</a>
+        <a href="#submissions">Weekly Submissions</a>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- About Section -->
+        <section id="about">
+            <div class="section-header">
+                <h2>Roots & Vision</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text">
+                    <p>Hello! I am an undergraduate student at <strong>UC Davis</strong> pursuing a Bachelor of Science in <strong>International Agriculture Development</strong> (Expected June 2026). My academic journey is deeply rooted in understanding the botany and physiology of cultivated plants and the soils in our environment.</p>
+                    
+                    <p>I have a strong passion for small-scale organic mixed vegetable production. As the owner of <strong>Plants4You</strong>, I have cultivated and propagated hundreds of drought-resistant and carnivorous plants, managing everything from sustainable pest control using natural predators like ladybugs, to running logistics and optimizing shipping inventories.</p>
+                    
+                    <p>My goal in taking the <em>Generative AI for Work & Research</em> course is to merge traditional agricultural stewardship with modern no-code AI tools, automating administrative tasks so we can spend less time at the desk and more time in the soil.</p>
+                </div>
+                <div class="about-card">
+                    <h3>Experience Highlights</h3>
+                    <ul>
+                        <li><strong>Entrepreneurship:</strong> Managed an Etsy shop with over 500 sales, optimizing inventory systems in Excel.</li>
+                        <li><strong>Cultivation:</strong> Propagated 100+ plants from seedlings with meticulous structural pruning and watering.</li>
+                        <li><strong>Community Health:</strong> Volunteered at Knights Landing One Health Center, serving as a Tagalog interpreter and streamlining patient check-ins.</li>
+                        <li><strong>Skills:</strong> Bilingual in English & Tagalog, proficient in Microsoft Office, and currently expanding into Generative AI workflows.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Course Section -->
+        <section id="course">
+            <div class="section-header">
+                <h2>About the Course</h2>
+            </div>
+            <div class="course-wrapper">
+                <p class="course-intro">
+                    <strong>Generative AI for Work & Research</strong> is an 8-week live cohort bootcamp hosted by <em>The GRAPH Courses</em>. It focuses on utilizing no-code AI tools for responsible task automation, empowering researchers and professionals to optimize their productivity.
+                </p>
+                <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin-top: 2rem;">
+                    <div style="flex: 1; min-width: 250px;">
+                        <h4 style="margin-bottom: 1rem; color: var(--lush-green);">Key Features</h4>
+                        <ul style="list-style: square; padding-left: 1.5rem; color: #4a5568;">
+                            <li>Weekly live workshops & help sessions</li>
+                            <li>Personalized feedback on assessments</li>
+                            <li>Capstone project coaching</li>
+                            <li>Responsible and ethical AI utilization</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1; min-width: 250px;">
+                        <h4 style="margin-bottom: 1rem; color: var(--lush-green);">Core Tools Explored</h4>
+                        <ul style="list-style: square; padding-left: 1.5rem; color: #4a5568;">
+                            <li>ChatGPT Canvas, Code Interpreter & Replit</li>
+                            <li>Julius & TheBricks for Data Analysis</li>
+                            <li>Elicit & LiteRev for Literature Reviews</li>
+                            <li>Botpress for Custom Chatbots & Agents</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Submissions Section -->
+        <section id="submissions">
+            <div class="section-header">
+                <h2>Weekly Submissions</h2>
+            </div>
+            <div class="submissions-grid">
+                
+                <!-- Week 1 -->
+                <div class="card">
+                    <div class="card-week">Module 1</div>
+                    <h3>Websites, Documents & Presentations</h3>
+                    <p>Generating structured research documents, and building simple project websites using LLMs, Markdown, and HTML outputs.</p>
+                    <a href="#" class="card-link">View Output &rarr;</a>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="card">
+                    <div class="card-week">Module 2</div>
+                    <h3>AI-Automated Data Analysis</h3>
+                    <p>Processing datasets, batch file conversion, and building automated dashboards using tools like Julius and Code Interpreter.</p>
+                    <a href="#" class="card-link">View Output &rarr;</a>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="card">
+                    <div class="card-week">Module 3</div>
+                    <h3>GenAI for Research & Text Analysis</h3>
+                    <p>Accelerating literature reviews, classifying text, and generating knowledge maps from complex agricultural document collections.</p>
+                    <a href="#" class="card-link">View Output &rarr;</a>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="card">
+                    <div class="card-week">Module 4</div>
+                    <h3>Custom GPTs & Chatbots</h3>
+                    <p>Building specialized research assistants and RAG systems to query agricultural knowledge bases using Botpress.</p>
+                    <a href="#" class="card-link">View Output &rarr;</a>
+                </div>
+
+                <!-- Week 5 -->
+                <div class="card">
+                    <div class="card-week">Module 5</div>
+                    <h3>AI for Task Automation</h3>
+                    <p>Creating browser control agents and app-to-app workflows to automate repetitive administrative and research tasks.</p>
+                    <a href="#" class="card-link">View Output &rarr;</a>
+                </div>
+
+                <!-- Week 6 -->
+                <div class="card">
+                    <div class="card-week">Module 6</div>
+                    <h3>GenAI for Communication</h3>
+                    <p>Designing accurate scientific figures and developing transparent, responsible summaries of research findings for outreach.</p>
+                    <a href="#" class="card-link">View Output &rarr;</a>
+                </div>
+
+                <!-- Week 7 & 8 -->
+                <div class="card">
+                    <div class="card-week">Module 7 & 8</div>
+                    <h3>Capstone Project & Showcase</h3>
+                    <p>My final AI solution addressing a specific challenge in small-scale organic agriculture and plant propagation management.</p>
+                    <a href="#" class="card-link">Coming Soon &rarr;</a>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <h2>Victor Meza</h2>
+        <p style="margin-top: 0.5rem; margin-bottom: 1.5rem; font-family: 'Poppins', sans-serif;">UC Davis • International Agriculture Development</p>
+        <p style="font-size: 0.8rem; opacity: 0.8; font-family: 'Poppins', sans-serif;">&copy; 2026 Victor Meza. Built for the Generative AI for Work & Research Course.</p>
+    </footer>
+
+</body>
+</html>
