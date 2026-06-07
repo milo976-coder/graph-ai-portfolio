@@ -328,6 +328,26 @@
             color: white;
         }
 
+        /* Consultation Section Style */
+        .consultation-wrapper {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 6px solid var(--earth);
+            max-width: 720px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .consultation-wrapper iframe {
+            width: 100%;
+            max-width: 640px;
+            border: none;
+            display: block;
+            margin: 0 auto;
+        }
+
         /* Footer */
         footer {
             background-color: var(--deep-sea);
@@ -354,6 +374,7 @@
             .about-grid { grid-template-columns: 1fr; }
             nav { flex-wrap: wrap; gap: 1rem; }
             .wave-divider svg { height: 60px; }
+            .consultation-wrapper { padding: 1rem 0.5rem; }
         }
     </style>
 </head>
@@ -379,6 +400,7 @@
         <a href="#about">About Me</a>
         <a href="#course">The Course</a>
         <a href="#submissions">Weekly Submissions</a>
+        <a href="#consultation">Consultation</a>
     </nav>
 
     <!-- Main Content -->
@@ -504,6 +526,16 @@
                     <a href="#" class="card-link">Coming Soon &rarr;</a>
                 </div>
 
+            </div>
+        </section>
+
+        <!-- Contact for Consultation Section -->
+        <section id="consultation">
+            <div class="section-header">
+                <h2>Contact for Consultation</h2>
+            </div>
+            <div class="consultation-wrapper">
+                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeIjFIk5acmEc7U0kfeKXwL5KQrzcDYa5zrV5A29pITkNA8Yg/viewform?embedded=true" width="640" height="777" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
             </div>
         </section>
 
